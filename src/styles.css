@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Syne';
+    src: url('./assets/fonts/Syne/Syne-VariableFont_wght.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'Syne-bold';
+    src: url('./assets/fonts/Syne/static/Syne-ExtraBold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'Syne-Semi-bold';
+    src: url('./assets/fonts/Syne/static/Syne-SemiBold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'SpaceGrotesk';
+    src: url('./assets/fonts/Space_Grotesk/static/SpaceGrotesk-Bold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'SpaceGrotesk-semibold';
+    src: url('./assets/fonts/Space_Grotesk/static/SpaceGrotesk-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+:root {
+    --mc-gray-dark: #3F423B;
+    --mc-skin: #EAE6D3;
+    --mc-red: #ED3A2B;
+}
+body{
+    background-color: var(--mc-skin);
+    overflow-x: hidden;
+}
+.textList{
+    font-family: 'SpaceGrotesk';
+}

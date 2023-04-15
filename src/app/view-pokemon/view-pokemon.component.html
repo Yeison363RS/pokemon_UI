@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row justify-content-center">
+
+        <div class="col-sm-10 col-md-10">
+            <h2 class="text-center display-4">{{namePokemon}}</h2>
+        </div>
+
+        <div class="card col-sm-8 col-md-8 textList h5">
+            <div class="row">
+                <div class="card-i col-12" [style.background-image]="'url(' + urlPokemon + ')'"></div>
+                <table class="mytable text-center col-12">
+                    <tr>
+                        <td class="p-2">#</td>
+                        <td class="p-2">{{idPokemon}}</td>
+                    </tr>
+                        <td class="p-2">Type(s)</td>
+                        <td class="p-2">{{typesPokemon}}</td>
+                </table>
+            </div>    
+        </div>
+    </div> 
+</div> 

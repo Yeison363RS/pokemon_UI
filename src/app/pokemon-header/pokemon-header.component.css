@@ -1,0 +1,22 @@
+.header-pok{
+    color: var(--mc-red);
+    font-family: 'Syne-bold';
+    border-bottom: 3px solid var(--mc-gray-dark);
+}
+.page-pok{
+    border-right: 3px solid var(--mc-gray-dark);
+}
+.icon-header{
+    width: 100px;
+    height: 100px;
+}
+.multiple-name{
+    font-family: 'Syne-bold';
+}
+h2{
+    color: var(--mc-gray-dark);
+    font-size: 70px;
+  -webkit-text-fill-color: var(--mc-skin);
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: var(--mc-gray-dark);
+}
