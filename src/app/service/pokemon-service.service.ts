@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { PaginationResponse, Pokemon,PokemonResponse} from './pokemon-interface';
-import { Observable, map, tap} from 'rxjs';
+import { PaginationResponse, Pokemon} from './pokemon-interface';
+import { Observable, map,shareReplay,ShareReplayConfig} from 'rxjs';
 
 
 @Injectable({
@@ -31,7 +31,16 @@ export class PokemonServiceService {
           })
     return pokemonslist
   } 
+
   getPokemon(idPokemon:string):Observable<any>{
-    return this.http.get(`${this.urlApi}${idPokemon}`);
+    const cacheKey=`${this.urlApi}${idPokemon}`;
+    const config: ShareReplayConfig= { bufferSize: 1, refCount: true};
+    return this.http.get<any>(cacheKey).pipe(
+      map(response =>{
+        response.cacheKey = cacheKey
+        return response;
+      }),
+      shareReplay(config)
+    );
   }
 }

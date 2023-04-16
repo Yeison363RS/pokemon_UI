@@ -23,19 +23,15 @@ export class ViewPokemonComponent {
     }
 
     loadImagePokemon(idPokemon:string){
-      //console.log(idPokemon)
       this.typesPokemon=""
       this.servicePokemon.getPokemon(idPokemon).subscribe({
         next:(data:any)=>{
-          //console.log(data)
           this.urlPokemon = data.sprites.front_default
           this.namePokemon= data.name
-          data.types.map( typ => this.typesPokemon=this.typesPokemon+"  "+typ.type.name)
-          data.types.map( typ => console.log(typ.type.name))
+          data.types.map( object => this.typesPokemon=this.typesPokemon+"  "+object.type.name)
           this.idPokemon=idPokemon
         },
         error:(e)=>console.log(e)
       })
-      //console.log("los types:"+this.typesPokemon)
     }
 }

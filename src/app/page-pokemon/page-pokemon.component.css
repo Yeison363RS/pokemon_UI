@@ -22,6 +22,9 @@ li{
     border-bottom: 2px solid var(--mc-gray-dark);
 
 }
+.list-group-item{
+    cursor: pointer;
+}
 .active{
     background-color: var(--mc-red);
     border-color: var(--mc-gray-dark);
