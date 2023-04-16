@@ -41,18 +41,19 @@ li{
     color: var(--mc-skin);
     background-color: var(--mc-gray-dark);
     cursor: pointer;
+    border-radius: 2px;
 }
 
 .previus{
     box-shadow:  
-    5px 5px 0px var(--mc-skin),
-    5px 5px 0px 1px var(--mc-red);
+    3px 3px 0px var(--mc-skin),
+    4px 4px 0px 1px var(--mc-red);
 }
 .next{
     text-decoration: none;
     box-shadow:  
-    -5px 5px 0px var(--mc-skin),
-    -5px 5px 0px 1px var(--mc-red);
+    -3px 3px 0px var(--mc-skin),
+    -4px 4px 0px 1px var(--mc-red);
 }
 .previus:hover{
     box-shadow:  
@@ -84,7 +85,7 @@ a:link, a:visited{
 }
 .page-number{
     color: var(--mc-gray-dark);
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .list-scroll::-webkit-scrollbar-thumb {
@@ -96,5 +97,5 @@ a:link, a:visited{
     border-radius: 0px;  
 }
 .container-number{
-    border-bottom: 2px solid var(--mc-gray-dark) ;
+    border-bottom: 3px solid var(--mc-gray-dark) ;
 }

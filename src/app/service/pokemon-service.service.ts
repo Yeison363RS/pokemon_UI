@@ -19,7 +19,17 @@ export class PokemonServiceService {
       map(this.tranform)
     );
   }
-
+  findPokemon(indice:string){
+    const cacheKey=`${this.urlApi}${indice}`;
+    const config: ShareReplayConfig= { bufferSize: 1, refCount: true};
+    return this.http.get<any>(cacheKey).pipe(
+      map(response =>{
+        response.cacheKey = cacheKey
+        return response;
+      }),
+      shareReplay(config)
+    );
+  }
   tranform(responsePagiantion:PaginationResponse):Pokemon[]{
     const pokemonslist:Pokemon[] = responsePagiantion.results.map(pokemon=>{
             const id =  pokemon.url.split("/")[6];
