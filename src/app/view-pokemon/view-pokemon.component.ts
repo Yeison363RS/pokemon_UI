@@ -37,14 +37,14 @@ export class ViewPokemonComponent {
     }
     assignDataPokemon(data:any){
         this.urlPokemon = data.sprites.front_default
-        const urlAnimate=data.sprites.versions['generation-v']['black-white'].animated.front_default
-        if(urlAnimate!=null){
-          this.urlPokemon=urlAnimate
+        const urlAnimate = data.sprites.versions['generation-v']['black-white'].animated.front_default
+        if(urlAnimate != null){
+          this.urlPokemon = urlAnimate
         }
-        this.namePokemon= data.name
+        this.namePokemon = data.name
         this.pokemonName.emit(this.namePokemon);
-        this.idPokemon=data.id
-        data.types.map( object => this.typesPokemon=this.typesPokemon+"  "+object.type.name)
-        
+        this.idPokemon = data.id
+        data.types.map( object => {
+        this.typesPokemon = this.typesPokemon+" "+object.type.name.charAt(0).toUpperCase() + object.type.name.slice(1)})
     }
 }

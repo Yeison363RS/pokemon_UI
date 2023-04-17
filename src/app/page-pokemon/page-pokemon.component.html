@@ -7,7 +7,7 @@
         
         <div class="row mt-3 justify-content-center textList">  
             <ul class="list-group col-12 p-0 list-scroll">
-                <li class="list-group-item h5" *ngFor="let pokemon of listPokemon" [ngClass]="{'active': pokemon === selectedObject}" (click)="selectPokemon(pokemon)" >{{pokemon.id}}.{{pokemon.name}}</li>
+                <li class="list-group-item h5" *ngFor="let pokemon of listPokemon" [ngClass]="{'active': pokemon === selectedObject}" (click)="selectPokemon(pokemon)" >{{pokemon.id}}.{{pokemon.name | titlecase}}</li>
             </ul>
         </div>
         <div class="row mt-3 justify-content-center textList">  

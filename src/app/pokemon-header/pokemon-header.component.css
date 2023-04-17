@@ -8,7 +8,7 @@
     border-bottom: 3px solid var(--mc-gray-dark);
 }
 .header-title{
-    font-size: 4.8vmax;
+    font-size: clamp(24px, 5vw, 90px);
 }
 
 .icon-header{
@@ -16,7 +16,7 @@
 }
 .multiple-name{
     font-family: 'Syne-bold';
-    font-size: 3.6rem;
+    font-size: clamp(24px, 5vw, 64px);
 }
 h2{
     color: var(--mc-gray-dark);
@@ -25,11 +25,8 @@ h2{
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: var(--mc-gray-dark);
 }
-@media (max-width: 800px) {
-    li{
-        background-color: aqua;
-    }
+@media (max-width: 950px) {
     #component-list {
-      border-right:none; 
+      border-right:none ; 
     }
 }

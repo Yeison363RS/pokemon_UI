@@ -9,13 +9,15 @@ import { PokemonHeaderComponent } from './pokemon-header/pokemon-header.componen
 import { FormsModule } from '@angular/forms';
 import { PokemonServiceService } from './service/pokemon-service.service';
 import { BusComunicateService } from './service/bus-comunicate.service';
+import { TypesPokemonPipe } from './pipes/types-pokemon.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     PagePokemonComponent,
     ViewPokemonComponent,
-    PokemonHeaderComponent
+    PokemonHeaderComponent,
+    TypesPokemonPipe
   ],
   imports: [
     BrowserModule,

@@ -7,13 +7,13 @@
 }
 h2{
     font-family: 'Syne-bold';
-    font-size: 3em;
+    font-size: clamp(24px, 4.5vw, 56px);
 }
 .card-i{
     background-color: var(--mc-red);
     background-blend-mode: screen;
     background-repeat: no-repeat; 
-    background-size: 9rem 9rem;   
+    background-size: 11rem 11rem;   
     background-position: center center;
     min-height: 300px;  
     max-height: 350px; 
