@@ -1,7 +1,7 @@
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
 import { PokemonServiceService } from '../service/pokemon-service.service';
 import { Pokemon } from '../service/pokemon-interface';
-import { Observable } from 'rxjs';
+import { fromEvent,map,debounceTime,distinctUntilChanged, tap} from 'rxjs';
 import { BusComunicateService } from '../service/bus-comunicate.service';
 
 @Component({
@@ -13,6 +13,8 @@ export class PagePokemonComponent implements OnInit{
   listPokemon : Pokemon[]
   numberPage=0
   selectedObject: Pokemon;
+  termSearch:number|string =""
+  @ViewChild('inputPokemon') inputPokemon: ElementRef;
 
 
   constructor(private pokemonService:PokemonServiceService,private busService:BusComunicateService){
@@ -20,6 +22,27 @@ export class PagePokemonComponent implements OnInit{
 
   ngOnInit():void{
     this.updatePage()
+    const inputSearch = fromEvent(document, 'keyup')
+      .pipe(
+        map(() => this.termSearch),
+        debounceTime(500),
+        distinctUntilChanged()
+      );
+
+      inputSearch.subscribe((searchTerm: string) => {
+        if(searchTerm.length>0){
+          this.searchPokemon();
+        }
+    });
+  }
+  searchPokemon(){
+    const evento = {
+      name: 'loadPokemonDetails',
+      payload: {
+        idPokemon:this.termSearch
+      }
+    };
+    this.busService.publish(evento);
   }
 
   loadFirstPokemonOnList(){
@@ -29,7 +52,7 @@ export class PagePokemonComponent implements OnInit{
   selectPokemon(pokemon:Pokemon){
     this.selectedObject = pokemon;
     const evento = {
-      name: 'miEvento',
+      name: 'loadPokemonDetails',
       payload: {
         idPokemon:pokemon.id,
         namePokemon:pokemon.name

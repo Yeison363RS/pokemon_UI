@@ -14,12 +14,12 @@
 <div>
 <div class="container-fluid p-0 m-0">
     <div class="row m-0 p-0">
-        <div class="col-sm-12 col-md-12 col-lg-4 page-pok">
+        <div class="col-sm-12 col-md-12 col-lg-4 page-pok" id="component-list">
             <app-page-pokemon></app-page-pokemon>
         </div>
 
         <div class="col-sm-12 mt-5 col-md-12 col-lg-4 ">
-            <app-view-pokemon ></app-view-pokemon>
+            <app-view-pokemon (pokemonName)="updatePokemonName($event)"></app-view-pokemon>
         </div>
 
         <div class="col-sm-12 mt-4 col-md-12 col-lg-4 multiple-name">

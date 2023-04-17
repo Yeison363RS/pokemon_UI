@@ -8,7 +8,7 @@
     border-bottom: 3px solid var(--mc-gray-dark);
 }
 .header-title{
-    font-size: 5vmax;
+    font-size: 4.8vmax;
 }
 
 .icon-header{
@@ -29,7 +29,7 @@ h2{
     li{
         background-color: aqua;
     }
-    #page-pok {
+    #component-list {
       border-right:none; 
     }
 }

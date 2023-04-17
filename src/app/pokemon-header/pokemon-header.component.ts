@@ -7,14 +7,17 @@ import { BusComunicateService } from '../service/bus-comunicate.service';
   styleUrls: ['./pokemon-header.component.css']
 })
 export class PokemonHeaderComponent {
-      namePokemon=""
+      namePokemon="ds"
 
       constructor(private comunicationBus:BusComunicateService){}
 
       ngOnInit(){
-        this.comunicationBus.subscribe('miEvento', (evento) => {
+        this.comunicationBus.subscribe('loadPokemonDetails', (evento) => {
           this.namePokemon=evento.payload.namePokemon
         });
+      }
+      updatePokemonName(namePokemon:string){
+        this.namePokemon=namePokemon
       }
        
 }

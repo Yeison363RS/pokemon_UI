@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,EventEmitter, Output} from '@angular/core';
 import { BusComunicateService } from '../service/bus-comunicate.service';
 import { PokemonServiceService } from '../service/pokemon-service.service';
 
@@ -9,15 +9,16 @@ import { PokemonServiceService } from '../service/pokemon-service.service';
   styleUrls: ['./view-pokemon.component.css']
 })
 export class ViewPokemonComponent {
-    idPokemon= "1"
-    namePokemon= "Gengar"
-    typesPokemon= "Poison"
-    urlPokemon="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png"
+    idPokemon= ""
+    namePokemon= ""
+    typesPokemon= ""
+    @Output() pokemonName = new EventEmitter<string>();
+    urlPokemon=""
     constructor(private busComuncation:BusComunicateService,private servicePokemon: PokemonServiceService){
 
     }
     ngOnInit():void{
-      this.busComuncation.subscribe('miEvento', (evento) => {
+      this.busComuncation.subscribe('loadPokemonDetails', (evento) => {
         this.loadImagePokemon(evento.payload.idPokemon)
       });
     }
@@ -25,13 +26,25 @@ export class ViewPokemonComponent {
     loadImagePokemon(idPokemon:string){
       this.typesPokemon=""
       this.servicePokemon.getPokemon(idPokemon).subscribe({
-        next:(data:any)=>{
-          this.urlPokemon = data.sprites.front_default
-          this.namePokemon= data.name
-          data.types.map( object => this.typesPokemon=this.typesPokemon+"  "+object.type.name)
-          this.idPokemon=idPokemon
-        },
-        error:(e)=>console.log(e)
+        next:(data)=>this.assignDataPokemon(data) ,
+        error:(e)=>{
+          this.namePokemon="Not found"
+          this.idPokemon=""
+          this.urlPokemon=""
+          console.log(e)
+        }
       })
+    }
+    assignDataPokemon(data:any){
+        this.urlPokemon = data.sprites.front_default
+        const urlAnimate=data.sprites.versions['generation-v']['black-white'].animated.front_default
+        if(urlAnimate!=null){
+          this.urlPokemon=urlAnimate
+        }
+        this.namePokemon= data.name
+        this.pokemonName.emit(this.namePokemon);
+        this.idPokemon=data.id
+        data.types.map( object => this.typesPokemon=this.typesPokemon+"  "+object.type.name)
+        
     }
 }

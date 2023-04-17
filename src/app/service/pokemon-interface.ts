@@ -13,4 +13,5 @@ export interface PaginationResponse{
     next:string
     previous:string
     results:PokemonResponse[]
+    cacheKey:string
 }
