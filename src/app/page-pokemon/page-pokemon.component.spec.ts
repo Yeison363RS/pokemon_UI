@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { PagePokemonComponent } from './page-pokemon.component';
+import { FormsModule } from '@angular/forms';
+import {HttpClient} from '@angular/common/http'
 
 describe('PagePokemoComponent', () => {
   let component: PagePokemonComponent;
@@ -8,7 +10,9 @@ describe('PagePokemoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PagePokemonComponent ]
+      imports:[HttpClientTestingModule,FormsModule],
+      declarations: [ PagePokemonComponent ],
+      providers:[HttpClient]
     })
     .compileComponents();
 

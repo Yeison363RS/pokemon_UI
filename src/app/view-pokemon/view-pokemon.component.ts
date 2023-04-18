@@ -11,7 +11,7 @@ import { PokemonServiceService } from '../service/pokemon-service.service';
 export class ViewPokemonComponent {
     idPokemon= ""
     namePokemon= ""
-    typesPokemon= ""
+    types= ""
     @Output() pokemonName = new EventEmitter<string>();
     urlPokemon=""
     constructor(private busComuncation:BusComunicateService,private servicePokemon: PokemonServiceService){
@@ -24,7 +24,7 @@ export class ViewPokemonComponent {
     }
 
     loadImagePokemon(idPokemon:string){
-      this.typesPokemon=""
+      this.types=""
       this.servicePokemon.getPokemon(idPokemon).subscribe({
         next:(data)=>this.assignDataPokemon(data) ,
         error:(e)=>{
@@ -45,6 +45,6 @@ export class ViewPokemonComponent {
         this.pokemonName.emit(this.namePokemon);
         this.idPokemon = data.id
         data.types.map( object => {
-        this.typesPokemon = this.typesPokemon+" "+object.type.name.charAt(0).toUpperCase() + object.type.name.slice(1)})
+        this.types = this.types+" "+object.type.name.charAt(0).toUpperCase() + object.type.name.slice(1)})
     }
 }

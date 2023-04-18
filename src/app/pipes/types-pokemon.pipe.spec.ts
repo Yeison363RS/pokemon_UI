@@ -3,6 +3,7 @@ import { TypesPokemonPipe } from './types-pokemon.pipe';
 describe('TypesPokemonPipe', () => {
   it('create an instance', () => {
     const pipe = new TypesPokemonPipe();
-    expect(pipe).toBeTruthy();
+    const text = " fire poison ground electric"
+    expect(pipe.transform(text)).toEqual("fire,poison,ground,electric");
   });
 });

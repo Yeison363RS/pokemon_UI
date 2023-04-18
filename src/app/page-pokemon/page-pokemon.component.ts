@@ -1,7 +1,7 @@
 import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
 import { PokemonServiceService } from '../service/pokemon-service.service';
 import { Pokemon } from '../service/pokemon-interface';
-import { fromEvent,map,debounceTime,distinctUntilChanged, tap} from 'rxjs';
+import { fromEvent,map,debounceTime,distinctUntilChanged} from 'rxjs';
 import { BusComunicateService } from '../service/bus-comunicate.service';
 
 @Component({
